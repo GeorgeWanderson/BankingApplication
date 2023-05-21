@@ -1,6 +1,6 @@
 ﻿namespace BankingApplication.Enum
 {
-    public enum TipoConta
+    public enum AccountType
     {
         PessoaFisica = 1,
         PessoaJuridica = 2
