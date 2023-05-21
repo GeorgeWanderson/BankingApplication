@@ -12,7 +12,7 @@ namespace BankingApplication.Entities
     public class MenuOptions
     {
         static List<Account> accountsList = new List<Account>();
-        public static void ShowMenu()
+        public static void WelcomeMenu()
         {
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine("************************************************");
@@ -24,6 +24,16 @@ namespace BankingApplication.Entities
             Console.WriteLine("Please wait 5 seconds, we will start our system soon!");
             Console.ResetColor();
             Thread.Sleep(5000);
+            BankingOptions();
+        }
+
+        public static void CallBackOptions()
+        {
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("You will be redirected to the main menu in 5 seconds.");
+            Console.ResetColor();
+            Thread.Sleep(5000);
+            Console.Clear();
             BankingOptions();
         }
 
@@ -47,6 +57,7 @@ namespace BankingApplication.Entities
             do
             {
                 option = Console.ReadLine().ToUpper();
+                Console.ForegroundColor = ConsoleColor.Cyan;
                 switch (option)
                 {
                     case "1":
@@ -74,11 +85,14 @@ namespace BankingApplication.Entities
                         throw new ArgumentOutOfRangeException();
 
                 }
+                Console.ResetColor();
             } while (option != "7");
         }
 
         private static void Deposit()
         {
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Cyan;
             Console.Write("Enter number account:");
             int number = Convert.ToInt32(Console.ReadLine());
 
@@ -107,10 +121,12 @@ namespace BankingApplication.Entities
                 Console.WriteLine("Account not found.");
             }
 
+            CallBackOptions();
         }
 
         private static void Withdrawal()
         {
+            Console.Clear();
             Console.WriteLine("Enter number account:");
             int number = Convert.ToInt32(Console.ReadLine());
 
@@ -137,6 +153,8 @@ namespace BankingApplication.Entities
                 Console.WriteLine();
                 Console.WriteLine("Account not found.");
             }
+
+            CallBackOptions();
 
         }
 
@@ -181,6 +199,7 @@ namespace BankingApplication.Entities
 
         private static void Transfer()
         {
+            Console.Clear();
             Console.Write("Enter your account number: ");
             int sourceNumber = Convert.ToInt32(Console.ReadLine());
 
@@ -227,6 +246,8 @@ namespace BankingApplication.Entities
                 Console.WriteLine();
                 Console.WriteLine("One or both accounts not found.");
             }
+
+            CallBackOptions();
         }
 
 
@@ -235,7 +256,7 @@ namespace BankingApplication.Entities
             Console.Clear();
             Console.WriteLine("Insert new Account: \n");
 
-            Console.WriteLine("Enter account number: ");
+            Console.WriteLine("Enter account number: \n");
             int number = Convert.ToInt32(Console.ReadLine());
 
             Console.WriteLine("Choose account type: ");
@@ -254,11 +275,14 @@ namespace BankingApplication.Entities
 
             Account account = new Account((AccountType)typePerson, initialBalance, initialCredit, holder, number);
             accountsList.Add(account);
+
+            Console.WriteLine();
+            CallBackOptions();
         }
 
         private static void ListAccounts()
         {
-
+            Console.Clear();
             if (accountsList.Count <= 0)
             {
                 Console.WriteLine("There are no accounts");
@@ -272,6 +296,8 @@ namespace BankingApplication.Entities
                     Console.WriteLine();
                 }
             }
+
+            CallBackOptions();
         }
     }
 }

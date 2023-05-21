@@ -9,8 +9,7 @@ using System.Threading.Tasks;
 namespace BankingApplication.Entities
 {
     public class Account
-    {
-        
+    {  
         public AccountType AccountType { get; private set; }
         public double Balance { get; private set; }
         public double Credit { get; private set; }

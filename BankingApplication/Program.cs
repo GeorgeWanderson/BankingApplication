@@ -8,7 +8,7 @@ namespace BankingApplication
     {
         public static void Main(string[] args)
         {
-            MenuOptions.ShowMenu();
+            MenuOptions.WelcomeMenu();
         }
     }
 }
